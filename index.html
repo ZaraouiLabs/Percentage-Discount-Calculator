@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator | Professional Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Calculate percentages and discounts instantly. Our clean, professional tool helps you find the percentage of a value or calculate final prices after discounts. Fast, free, and mobile-friendly.">
+    <style>
+        :root { --primary: #6366f1; --bg: #f8fafc; --card: #ffffff; }
+        body { margin: 0; background: var(--bg); font-family: 'Inter', sans-serif; color: #0f172a; padding: 20px; }
+        
+        /* Increased max-width to 800px for a wider look */
+        .wrapper { width: 95%; max-width: 800px; margin: 0 auto; }
+        
+        .ad-container { margin: 20px auto; border-radius: 16px; overflow: hidden; display: flex; justify-content: center; background: #f1f5f9; align-items: center; border: 1px solid #e2e8f0; width: 100%; min-height: 90px; }
+
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { margin: 0; font-size: 2.5rem; color: #6366f1; font-weight: 800; }
+        
+        .card { background: var(--card); padding: 40px; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        input { width: 100%; padding: 18px; margin: 15px 0; border: 2px solid #e2e8f0; border-radius: 12px; box-sizing: border-box; font-size: 16px; }
+        
+        button { background: #6366f1; color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        button:hover { filter: brightness(1.1); }
+        
+        #result { margin-top: 30px; padding: 25px; background: #f8fafc; border-radius: 12px; text-align: center; font-weight: 600; font-size: 1.25rem; color: #1e293b; border: 1px dashed #cbd5e1; }
+        #result:empty { border: none; padding: 0; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Percentage Calculator</h1>
+        </header>
+
+        <!-- Header Ad -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {'key' : 'ea9023c6230a4134ea2bb21d415f3647', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};
+            </script>
+            <script type="text/javascript" async src="https://www.highperformanceformat.com/ea9023c6230a4134ea2bb21d415f3647/invoke.js"></script>
+        </div>
+
+        <div class="card">
+            <label style="font-weight: 600; font-size: 0.95rem;">What is the total amount?</label>
+            <input type="number" id="amount" placeholder="e.g. 100">
+            
+            <label style="font-weight: 600; font-size: 0.95rem;">What is the percentage or discount?</label>
+            <input type="number" id="percentage" placeholder="e.g. 20">
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                <button onclick="calc(false)">Find % Value</button>
+                <button style="background: #ef4444;" onclick="calc(true)">Apply Discount</button>
+            </div>
+            
+            <div id="result"></div>
+        </div>
+
+        <!-- Footer Ad -->
+        <div class="ad-container" style="min-height: 250px;">
+            <script type="text/javascript">
+                atOptions = {'key' : '7cf39fb102b8e5ac06d9ab8ec745e58c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {}};
+            </script>
+            <script type="text/javascript" async src="https://www.highperformanceformat.com/7cf39fb102b8e5ac06d9ab8ec745e58c/invoke.js"></script>
+        </div>
+    </div>
+
+    <script>
+        function calc(isDiscount) {
+            const amt = parseFloat(document.getElementById('amount').value);
+            const pct = parseFloat(document.getElementById('percentage').value);
+            const resDiv = document.getElementById('result');
+            
+            if (isNaN(amt) || isNaN(pct)) {
+                resDiv.innerText = "Please enter valid numbers!";
+                return;
+            }
+            
+            const res = isDiscount ? amt - (amt * (pct/100)) : (amt * (pct/100));
+            resDiv.innerText = isDiscount ? `Final Price: ${res.toFixed(2)}` : `Value: ${res.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
