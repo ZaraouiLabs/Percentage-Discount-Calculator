@@ -1,71 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="Q-XbM2cd_CNRexjUQ9VFpJqhZxqwaHPSdarqKCTSTPw" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Percentage Calculator | Professional Tools</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <meta name="description" content="Calculate percentages and discounts instantly. Our clean, professional tool helps you find the percentage of a value or calculate final prices after discounts. Fast, free, and mobile-friendly.">
+    <title>Percentage & Discount Calculator| UtilitySuite</title>
+    <meta name="description" content="Quickly calculate percentages or final prices after discounts. Easy-to-use tool for shopping and finance.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #6366f1; --bg: #f8fafc; --card: #ffffff; }
-        body { margin: 0; background: var(--bg); font-family: 'Inter', sans-serif; color: #0f172a; padding: 20px; }
-        
-        /* Increased max-width to 800px for a wider look */
-        .wrapper { width: 95%; max-width: 800px; margin: 0 auto; }
-        
-        .ad-container { margin: 20px auto; border-radius: 16px; overflow: hidden; display: flex; justify-content: center; background: #f1f5f9; align-items: center; border: 1px solid #e2e8f0; width: 100%; min-height: 90px; }
+        :root { 
+            --bg-color: #f1f5f9; 
+            --primary: #4f46e5;
+            --danger: #ef4444;
+            --text: #1e293b;
+            --border: #e2e8f0;
+            --font-family: 'Outfit', sans-serif;
+        }
+        body { margin: 0; font-family: var(--font-family); background-color: var(--bg-color); color: var(--text); display: flex; min-height: 100vh; }
 
-        header { text-align: center; margin-bottom: 30px; }
-        h1 { margin: 0; font-size: 2.5rem; color: #6366f1; font-weight: 800; }
+        .top-accent { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: var(--primary); z-index: 1000; }
+
+        .sidebar { width: 260px; background: white; border-right: 1px solid var(--border); padding: 60px 20px; flex-shrink: 0; }
+        .brand { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.25em; color: #64748b; margin-bottom: 30px; padding-left: 20px; }
         
-        .card { background: var(--card); padding: 40px; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
-        input { width: 100%; padding: 18px; margin: 15px 0; border: 2px solid #e2e8f0; border-radius: 12px; box-sizing: border-box; font-size: 16px; }
+        #tools-sidebar { display: flex; flex-direction: column; }
+        .tool-btn { 
+            display: block; padding: 16px 20px; margin: 2px 0; border-radius: 10px; 
+            text-decoration: none; color: #475569; font-size: 13px; font-weight: 600; 
+            transition: all 0.2s; border-bottom: 1px solid #f8fafc;
+        }
+        .tool-btn:hover { background: #f5f3ff; color: var(--primary); border-bottom-color: #e0e7ff; }
+
+        .main-content { flex: 1; padding: 60px 40px; display: flex; flex-direction: column; align-items: center; }
+        .wrapper { max-width: 800px; width: 100%; }
+
+        h1 { margin: 0 0 40px 0; color: #0f172a; font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; }
+
+        .ad-container { display: flex; justify-content: center; margin: 20px 0; overflow: hidden; }
         
-        button { background: #6366f1; color: white; border: none; padding: 18px; width: 100%; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .card { background: white; padding: 32px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: #64748b; }
+        input { width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; box-sizing: border-box; font-size: 16px; outline: none; }
+        input:focus { border-color: var(--primary); }
+
+        .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        button { border: none; padding: 18px; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; transition: 0.2s; color: white; text-transform: uppercase; font-family: var(--font-family); }
         button:hover { filter: brightness(1.1); }
-        
-        #result { margin-top: 30px; padding: 25px; background: #f8fafc; border-radius: 12px; text-align: center; font-weight: 600; font-size: 1.25rem; color: #1e293b; border: 1px dashed #cbd5e1; }
-        #result:empty { border: none; padding: 0; }
+        .btn-primary { background: var(--primary); }
+        .btn-danger { background: var(--danger); }
+
+        #result { margin-top: 30px; padding: 25px; background: #f8fafc; border-radius: 12px; text-align: center; font-weight: 700; font-size: 1.5rem; color: var(--text); border: 1px dashed var(--border); }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 30px 20px; }
+            .main-content { padding: 30px 20px; }
+        }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <header>
+
+    <div class="top-accent"></div>
+
+    <aside class="sidebar">
+        <div class="brand">UtilitySuite</div>
+        <div id="tools-sidebar"></div>
+    </aside>
+
+    <main class="main-content">
+        <div class="wrapper">
             <h1>Percentage Calculator</h1>
-        </header>
 
-        <!-- Header Ad -->
-        <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = {'key' : 'ea9023c6230a4134ea2bb21d415f3647', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};
-            </script>
-            <script type="text/javascript" async src="https://www.highperformanceformat.com/ea9023c6230a4134ea2bb21d415f3647/invoke.js"></script>
-        </div>
-
-        <div class="card">
-            <label style="font-weight: 600; font-size: 0.95rem;">What is the total amount?</label>
-            <input type="number" id="amount" placeholder="e.g. 100">
-            
-            <label style="font-weight: 600; font-size: 0.95rem;">What is the percentage or discount?</label>
-            <input type="number" id="percentage" placeholder="e.g. 20">
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
-                <button onclick="calc(false)">Find % Value</button>
-                <button style="background: #ef4444;" onclick="calc(true)">Apply Discount</button>
+            <div class="ad-container">
+                <script>atOptions = {'key' : 'ea9023c6230a4134ea2bb21d415f3647', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {}};</script>
+                <script src="https://www.highperformanceformat.com/ea9023c6230a4134ea2bb21d415f3647/invoke.js"></script>
             </div>
-            
-            <div id="result"></div>
-        </div>
 
-        <!-- Footer Ad -->
-        <div class="ad-container" style="min-height: 250px;">
-            <script type="text/javascript">
-                atOptions = {'key' : '7cf39fb102b8e5ac06d9ab8ec745e58c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {}};
-            </script>
-            <script type="text/javascript" async src="https://www.highperformanceformat.com/7cf39fb102b8e5ac06d9ab8ec745e58c/invoke.js"></script>
+            <div class="card">
+                <div class="input-group">
+                    <label>Total Amount</label>
+                    <input type="number" id="amount" placeholder="e.g. 100">
+                </div>
+                <div class="input-group">
+                    <label>Percentage or Discount (%)</label>
+                    <input type="number" id="percentage" placeholder="e.g. 20">
+                </div>
+                
+                <div class="controls">
+                    <button class="btn-primary" onclick="calc(false)">Find % Value</button>
+                    <button class="btn-danger" onclick="calc(true)">Apply Discount</button>
+                </div>
+                
+                <div id="result"></div>
+            </div>
+
+            <div class="ad-container">
+                <script>atOptions = {'key' : '7cf39fb102b8e5ac06d9ab8ec745e58c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {}};</script>
+                <script src="https://www.highperformanceformat.com/7cf39fb102b8e5ac06d9ab8ec745e58c/invoke.js"></script>
+            </div>
         </div>
-    </div>
+    </main>
 
     <script>
         function calc(isDiscount) {
@@ -77,10 +112,24 @@
                 resDiv.innerText = "Please enter valid numbers!";
                 return;
             }
-            
             const res = isDiscount ? amt - (amt * (pct/100)) : (amt * (pct/100));
             resDiv.innerText = isDiscount ? `Final Price: ${res.toFixed(2)}` : `Value: ${res.toFixed(2)}`;
         }
+
+        const tools = [
+            { name: "QR Generator", url: "https://zaraouilabs.github.io/QR-Code-Generator/" },
+            { name: "Image Compressor", url: "https://zaraouilabs.github.io/Image-Compressor/" },
+            { name: "Date Calculator", url: "https://zaraouilabs.github.io/Date-Calculator/" },
+            { name: "HEIC Converter", url: "https://zaraouilabs.github.io/HEIC-to-JPEG-converter/" },
+            { name: "WebP Converter", url: "https://zaraouilabs.github.io/webp-to-jpg-convertor/" },
+            { name: "JSON Formatter", url: "https://zaraouilabs.github.io/JSON-formatter/" },
+            { name: "Word Counter", url: "https://zaraouilabs.github.io/wordcount-pro/" },
+            { name: "Case Converter", url: "https://zaraouilabs.github.io/case-converter/" },
+            { name: "Base64 Converter", url: "https://zaraouilabs.github.io/Base64_convertor/" },
+            { name: "Password Generator", url: "https://zaraouilabs.github.io/Password_Generator/" },
+            { name: "Loan Calculator", url: "https://zaraouilabs.github.io/loan-calculator/" }
+        ];
+        document.getElementById('tools-sidebar').innerHTML = tools.map(t => `<a href="${t.url}" class="tool-btn">${t.name}</a>`).join('');
     </script>
     <script src="https://pl30403648.effectivecpmnetwork.com/8d/6e/16/8d6e16cf626599011a4b1d03060dc5cf.js"></script>
 </body>
