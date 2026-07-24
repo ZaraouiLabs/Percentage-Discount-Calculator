@@ -56,6 +56,17 @@
 
         #result { margin-top: 30px; padding: 25px; background: #f8fafc; border-radius: 12px; text-align: center; font-weight: 700; font-size: 1.5rem; color: var(--text); border: 1px dashed var(--border); }
 
+        /* SEO Content Styles */
+        .info-section { background: white; padding: 32px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin-top: 25px; }
+        .info-section h2 { color: #0f172a; font-size: 1.4rem; font-weight: 700; margin-top: 0; margin-bottom: 12px; }
+        .info-section h3 { color: #334155; font-size: 1.1rem; font-weight: 600; margin-top: 20px; margin-bottom: 8px; }
+        .info-section p, .info-section li { color: #475569; font-size: 0.95rem; line-height: 1.6; }
+        .info-section ol { padding-left: 20px; margin: 0; }
+        .info-section ol li { margin-bottom: 8px; }
+        .faq-item { margin-bottom: 16px; }
+        .faq-item:last-child { margin-bottom: 0; }
+        .privacy-badge { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; padding: 16px; border-radius: 12px; font-size: 0.9rem; margin-top: 20px; font-weight: 500; }
+
         @media (max-width: 768px) {
             body { flex-direction: column; }
             .sidebar { display: none; }
@@ -111,6 +122,42 @@
                 <script>atOptions = {'key' : '7cf39fb102b8e5ac06d9ab8ec745e58c', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {}};</script>
                 <script src="https://www.highperformanceformat.com/7cf39fb102b8e5ac06d9ab8ec745e58c/invoke.js"></script>
             </div>
+
+            <!-- SEO Content & About Sections -->
+            <div class="info-section">
+                <h2>About UtilitySuite Percentage Calculator</h2>
+                <p>The UtilitySuite Percentage & Discount Calculator is a versatile financial and math utility designed for quick everyday calculations. Whether you are shopping sales, calculating sales tax, estimating tips, or figuring out business markups, this tool instantly computes percentage amounts and final discounted prices without hassle.</p>
+
+                <h2>How to Calculate Percentages and Discounts</h2>
+                <ol>
+                    <li><strong>Enter Total Amount:</strong> Type your base number or original price into the <strong>Total Amount</strong> input box.</li>
+                    <li><strong>Enter Percentage:</strong> Specify the percentage rate or discount rate in the <strong>Percentage or Discount (%)</strong> input field.</li>
+                    <li><strong>Select Calculation Mode:</strong>
+                        <ul>
+                            <li>Click <strong>"Find % Value"</strong> to discover what exact dollar/unit amount the percentage represents.</li>
+                            <li>Click <strong>"Apply Discount"</strong> to immediately deduct the percentage from your total and find the net final price.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                <div class="faq-item">
+                    <h3>How is a discount percentage calculated manually?</h3>
+                    <p>To calculate a discount, multiply the total price by the discount percentage, then divide by 100 to get the savings amount. Finally, subtract that savings amount from the original price.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I use this tool for taxes and tips?</h3>
+                    <p>Yes! To find the exact tax or tip amount on a bill, enter the pre-tax total and percentage rate, then click <strong>"Find % Value"</strong>.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is my financial data secure?</h3>
+                    <p>Absolutely. All computations occur client-side in your web browser environment. No numbers or calculation logs are recorded or sent to remote servers.</p>
+                </div>
+
+                <div class="privacy-badge">
+                    🔒 <strong>Privacy First Note:</strong> UtilitySuite guarantees 100% user privacy. All mathematical computations take place directly in your web browser.
+                </div>
+            </div>
         </div>
     </main>
 
@@ -128,7 +175,7 @@
             resDiv.innerText = isDiscount ? `Final Price: ${res.toFixed(2)}` : `Value: ${res.toFixed(2)}`;
         }
 
-       const tools = [
+        const tools = [
             { name: "QR Generator", url: "https://zaraouilabs.github.io/QR-Code-Generator/" },
             { name: "Image Compressor", url: "https://zaraouilabs.github.io/Image-Compressor/" },
             { name: "Date Calculator", url: "https://zaraouilabs.github.io/Date-Calculator/" },
